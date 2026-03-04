@@ -118,7 +118,7 @@
     gap: 0.8rem;
     margin-bottom: 0.4rem;
   }
-  .feat-icon { font-size: 1.6rem; line-height: 1; }
+
   .feat-main-name {
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.3rem;
@@ -242,25 +242,25 @@
   </div>
 
   <div class="class-nav">
-    <button class="class-tab active" onclick="show('barbarian')">🪓 Barbarian</button>
-    <button class="class-tab" onclick="show('bard')">🎶 Bard</button>
-    <button class="class-tab" onclick="show('cleric')">⛪ Cleric</button>
-    <button class="class-tab" onclick="show('druid')">🌿 Druid</button>
-    <button class="class-tab" onclick="show('fighter')">⚔️ Fighter</button>
-    <button class="class-tab" onclick="show('monk')">👊 Monk</button>
-    <button class="class-tab" onclick="show('paladin')">🛡️ Paladin</button>
-    <button class="class-tab" onclick="show('ranger')">🏹 Ranger</button>
-    <button class="class-tab" onclick="show('rogue')">🗡️ Rogue</button>
-    <button class="class-tab" onclick="show('sorcerer')">✨ Sorcerer</button>
-    <button class="class-tab" onclick="show('warlock')">👁️ Warlock</button>
-    <button class="class-tab" onclick="show('wizard')">📖 Wizard</button>
-    <button class="class-tab" onclick="show('artificer')">⚙️ Artificer</button>
+    <button class="class-tab active" onclick="show('artificer')">Artificer</button>
+    <button class="class-tab" onclick="show('barbarian')">Barbarian</button>
+    <button class="class-tab" onclick="show('bard')">Bard</button>
+    <button class="class-tab" onclick="show('cleric')">Cleric</button>
+    <button class="class-tab" onclick="show('druid')">Druid</button>
+    <button class="class-tab" onclick="show('fighter')">Fighter</button>
+    <button class="class-tab" onclick="show('monk')">Monk</button>
+    <button class="class-tab" onclick="show('paladin')">Paladin</button>
+    <button class="class-tab" onclick="show('ranger')">Ranger</button>
+    <button class="class-tab" onclick="show('rogue')">Rogue</button>
+    <button class="class-tab" onclick="show('sorcerer')">Sorcerer</button>
+    <button class="class-tab" onclick="show('warlock')">Warlock</button>
+    <button class="class-tab" onclick="show('wizard')">Wizard</button>
   </div>
 
   <!-- ══════════════════════════════════════════════ BARBARIAN -->
-  <div class="feat-panel active" id="barbarian">
+  <div class="feat-panel" id="barbarian">
     <div class="feat-title-row">
-      <span class="feat-icon">🪓</span>
+      
       <span class="feat-main-name">Primal Fury</span>
       <span class="feat-class-label">Barbarian</span>
     </div>
@@ -308,7 +308,7 @@
   <!-- ══════════════════════════════════════════════ BARD -->
   <div class="feat-panel" id="bard">
     <div class="feat-title-row">
-      <span class="feat-icon">🎶</span>
+      
       <span class="feat-main-name">Voice of Legend</span>
       <span class="feat-class-label">Bard</span>
     </div>
@@ -354,7 +354,7 @@
   <!-- ══════════════════════════════════════════════ CLERIC -->
   <div class="feat-panel" id="cleric">
     <div class="feat-title-row">
-      <span class="feat-icon">⛪</span>
+      
       <span class="feat-main-name">Divine Conduit</span>
       <span class="feat-class-label">Cleric</span>
     </div>
@@ -400,44 +400,49 @@
   <!-- ══════════════════════════════════════════════ DRUID -->
   <div class="feat-panel" id="druid">
     <div class="feat-title-row">
-      <span class="feat-icon">🌿</span>
+      
       <span class="feat-main-name">Child of the Wild</span>
       <span class="feat-class-label">Druid</span>
     </div>
-    <p class="feat-flavor">The boundary between yourself and nature grows thinner with each passing season. Eventually, you will wonder where the wild ends and you begin.</p>
+    <p class="feat-flavor">The boundary between yourself and nature grows thinner with each passing season. You walk the path of the Circle of the Moon — those who shed their flesh not as escape, but as transformation. Eventually, you will wonder where the wild ends and you begin.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Wild Shape</span></div>
       <div class="tier-body">
-        <p>You can use <strong>Wild Shape</strong> as a Bonus Action twice per Long Rest, transforming into a Beast of CR 1/2 or lower from your list of Known Forms (you begin with two Known Forms, swappable on a Long Rest). You revert if you drop to 0 HP or after 1 hour. You cannot cast spells while transformed, but you can speak.</p>
-        <p>You can communicate simple concepts (not language) with Beasts and Plants. You gain proficiency in Nature. If you already have it, gain expertise instead.</p>
+        <p>You can use <strong>Wild Shape</strong> as a Bonus Action. You have two uses, regaining one on a Short Rest and all uses on a Long Rest. You know four Beast forms (your <strong>Known Forms</strong>), chosen from Beasts with a maximum CR of 1/4 that lack a Fly Speed. You can swap your Known Forms on a Long Rest.</p>
+        <p>When you transform, you <em>retain your own hit points</em> — you do not assume the beast's HP. Instead, you gain <strong>Temporary Hit Points</strong> equal to your character level. You revert early if you have the Incapacitated condition, die, or choose to revert as a Bonus Action. Wild Shape lasts a number of hours equal to half your character level. You can speak while transformed.</p>
+        <p>You gain proficiency in Nature. If you already have it, gain expertise instead. You can communicate simple ideas (not language) with Beasts and Plants.</p>
       </div>
     </div>
 
     <div class="tier-block tier-2">
-      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Deeper Wilds</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Circle of the Moon — Circle Forms</span></div>
       <div class="tier-body">
-        <p>Wild Shape uses increase to equal your Proficiency Bonus, regained on a Short or Long Rest. Your Known Forms expand — you can now include Beasts of CR 1 or lower (or CR equal to half your Proficiency Bonus, whichever is higher), and your forms can have a swim or climb speed. You can change your Known Forms whenever you finish a Long Rest.</p>
-        <p>You learn the <em>Speak with Animals</em> spell and it is always prepared for you. You also learn two Druid cantrips if you don't already know them.</p>
+        <p>Your Wild Shape is infused with lunar power. Your Known Forms expand to six, and you can now include Beasts up to CR 1. Your Wild Shape uses increase to equal your Proficiency Bonus, and you can now choose Known Forms with a Swim Speed.</p>
+        <p><strong>Circle Forms (Moon).</strong> Your AC in Beast form becomes 13 + your Wisdom modifier, unless the Beast form's AC is already higher. When you transform, you gain <strong>Temporary Hit Points equal to three times your character level</strong> (instead of once your level), representing the moon's bolstering power.</p>
+        <p><strong>Beast Spells.</strong> You can cast Druid spells that have no material component cost while in Wild Shape, using your beast form's movements and vocalizations. This is a base 2024 Druid feature now granted to you through this feat.</p>
+        <p>You learn <em>Speak with Animals</em> — it is always prepared for you.</p>
       </div>
     </div>
 
     <div class="tier-block tier-3">
-      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Beast Spells</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Lunar Form & Improved Circle Forms</span></div>
       <div class="tier-body">
-        <p>You can now transform into Beasts up to CR 3, and your forms can have a fly speed. Wild Shape duration extends to 3 hours.</p>
-        <p>You gain <strong>Beast Spells</strong>: you can cast Druid spells that require no material components while in Wild Shape form, using your beast body's movements, vocalizations, and concentration.</p>
-        <p>You gain <strong>Timeless Body</strong>: you no longer age, cannot be magically aged, and require only half the food and water a normal humanoid does.</p>
+        <p>Your Known Forms expand to eight. Your maximum Beast CR for Known Forms now equals your character level divided by 3 (rounded down), and your Known Forms can now include Beasts with a Fly Speed.</p>
+        <p><strong>Lunar Form.</strong> Once per turn when you hit with an attack in Beast form, you can deal an extra <strong>2d10 Radiant damage</strong>. The moonlight that flows through you burns those who would harm the wild.</p>
+        <p><strong>Moonlight Step.</strong> As a Bonus Action while in Beast form, you can teleport up to 30 feet to an unoccupied space you can see. When you do, you can choose one willing creature within 10 feet of your destination — that creature gains Temporary Hit Points equal to your Wisdom modifier + your Proficiency Bonus. Usable a number of times equal to your Wisdom modifier per Long Rest.</p>
+        <p>You gain <strong>Timeless Body</strong>: you age more slowly (1 year per 10 years that pass) and cannot be magically aged.</p>
       </div>
     </div>
 
     <div class="tier-block tier-4">
       <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Archdruid's Mantle</span></div>
       <div class="tier-body">
-        <p>You can transform into Beasts of CR 6 or lower. When you revert from Wild Shape, you regain hit points equal to three times your Proficiency Bonus.</p>
-        <p>You gain two additional Wild Shape uses specifically for casting <strong>Elemental Wild Shape</strong>: you can expend two Wild Shape uses to transform into an Air, Earth, Fire, or Water Elemental instead of a Beast.</p>
-        <p>Once per Long Rest, you can cast one Druid spell of 5th level or lower without expending a spell slot.</p>
+        <p><strong>Evergreen Wild Shape.</strong> Whenever you roll Initiative and have no Wild Shape uses remaining, you regain one use immediately.</p>
+        <p><strong>Elemental Forms.</strong> You can expend two Wild Shape uses at once to transform into an Air, Earth, Fire, or Water Elemental (your choice) instead of a Beast. These elemental forms benefit from your Circle Forms AC and Lunar Form damage. Your Temporary HP when entering an Elemental form equals three times your character level, as normal.</p>
+        <p><strong>Nature Magician.</strong> Once per Long Rest, you can convert unexpended Wild Shape uses into a single spell slot — each use contributes 2 spell levels (e.g., two uses produce a 4th-level slot). This lets your primal energy flow freely between form and magic.</p>
+        <p>Your Beast CR cap increases to a maximum of CR 6, allowing you to embody the most fearsome creatures in the natural world.</p>
       </div>
     </div>
   </div>
@@ -445,7 +450,7 @@
   <!-- ══════════════════════════════════════════════ FIGHTER -->
   <div class="feat-panel" id="fighter">
     <div class="feat-title-row">
-      <span class="feat-icon">⚔️</span>
+      
       <span class="feat-main-name">Weapon Master</span>
       <span class="feat-class-label">Fighter</span>
     </div>
@@ -491,7 +496,7 @@
   <!-- ══════════════════════════════════════════════ MONK -->
   <div class="feat-panel" id="monk">
     <div class="feat-title-row">
-      <span class="feat-icon">👊</span>
+      
       <span class="feat-main-name">Disciple of the Way</span>
       <span class="feat-class-label">Monk</span>
     </div>
@@ -539,7 +544,7 @@
   <!-- ══════════════════════════════════════════════ PALADIN -->
   <div class="feat-panel" id="paladin">
     <div class="feat-title-row">
-      <span class="feat-icon">🛡️</span>
+      
       <span class="feat-main-name">Oath Bound</span>
       <span class="feat-class-label">Paladin</span>
     </div>
@@ -586,45 +591,48 @@
   <!-- ══════════════════════════════════════════════ RANGER -->
   <div class="feat-panel" id="ranger">
     <div class="feat-title-row">
-      <span class="feat-icon">🏹</span>
+      
       <span class="feat-main-name">Wanderer's Eye</span>
       <span class="feat-class-label">Ranger</span>
     </div>
-    <p class="feat-flavor">The wilderness does not forgive ignorance. You have learned to read every track, every wind shift, every silence — and to strike before your prey knows you are there.</p>
+    <p class="feat-flavor">You do not choose a favored enemy by species or terrain. Your favored enemy is whoever you are hunting right now. The mark follows your gaze — and what you mark, you kill.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
     <div class="tier-block tier-1">
-      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Hunter's Mark & Favored Terrain</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Favored Enemy & Deft Explorer</span></div>
       <div class="tier-body">
-        <p><strong>Hunter's Mark.</strong> You always have <em>Hunter's Mark</em> prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus per Long Rest, using Wisdom as your spellcasting ability. When you hit the marked creature, it takes an extra 1d6 Force damage (not weapon type — Force is the 2024 default).</p>
-        <p><strong>Favored Terrain.</strong> Choose two terrain types. You ignore nonmagical difficult terrain there, cannot become lost by nonmagical means, and have advantage on Perception and Survival checks in those environments.</p>
+        <p><strong>Favored Enemy.</strong> You always have <em>Hunter's Mark</em> prepared. You can cast it without expending a spell slot a number of times equal to your Proficiency Bonus, regained on a Long Rest. You use Wisdom as your spellcasting ability for it. When you hit your marked target, it takes an extra 1d6 Force damage.</p>
+        <p><strong>Deft Explorer.</strong> Choose one skill you are proficient in — you gain Expertise in it (double Proficiency Bonus). You also learn two additional languages of your choice, reflecting your wide-ranging travels.</p>
+        <p><strong>Roving.</strong> Your Speed increases by 10 feet while you are not wearing Heavy Armor. You also gain a Climb Speed and a Swim Speed equal to your Speed.</p>
       </div>
     </div>
 
     <div class="tier-block tier-2">
-      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Primeval Awareness</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Relentless Hunter & Nature's Veil</span></div>
       <div class="tier-body">
-        <p><strong>Hunter's Mark</strong> no longer requires concentration for you. When your marked target dies, you can move the mark to a new creature within 30 feet as a Bonus Action (no action or slot required).</p>
-        <p><strong>Primeval Awareness.</strong> As an action, you can attune to the land around you. For 1 minute, you know the location (but not exact position) of any Aberrations, Celestials, Dragons, Elementals, Fey, Fiends, or Undead within 1 mile of you (6 miles in your Favored Terrain). Usable once per Short Rest.</p>
-        <p>You learn two Ranger spells of your choice (up to 2nd level), always prepared.</p>
+        <p>Your free castings of Hunter's Mark increase to twice your Proficiency Bonus per Long Rest.</p>
+        <p><strong>Relentless Hunter.</strong> Taking damage can no longer break your Concentration on <em>Hunter's Mark</em>. Your quarry cannot shake your focus.</p>
+        <p><strong>Nature's Veil.</strong> As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn, calling on primal spirits to cloak you. You can use this feature a number of times equal to your Wisdom modifier (minimum once), regained on a Long Rest.</p>
+        <p>You gain Expertise in a second skill you are proficient in, and you learn two Ranger spells of up to 2nd level that are always prepared for you.</p>
       </div>
     </div>
 
     <div class="tier-block tier-3">
-      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Foe Slayer</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Precise Hunter & Hunter Subclass</span></div>
       <div class="tier-body">
-        <p>Hunter's Mark now deals an extra 1d10 Force damage (up from 1d6) against the marked target.</p>
-        <p>You gain two <strong>Hunter's Prey</strong> options of your choice: <em>Colossus Slayer</em> (1d8 extra damage against a creature below max HP, once per turn), <em>Giant Killer</em> (reaction attack when a Large+ creature misses you), or <em>Horde Breaker</em> (one extra attack against a second creature within 5 feet of the first target).</p>
-        <p>Choose one additional Favored Terrain type. You gain <strong>Vanish</strong>: you can Hide as a Bonus Action and cannot be tracked by nonmagical means unless you choose to leave a trail.</p>
+        <p><strong>Precise Hunter.</strong> You have Advantage on attack rolls against the creature currently marked by your <em>Hunter's Mark</em>. When you have advantage this way, you can reroll one of the dice once and must use the new result.</p>
+        <p><strong>Feral Senses.</strong> Your connection to the forces of nature grants you Blindsight with a range of 30 feet.</p>
+        <p>You choose the <strong>Hunter subclass</strong>. You gain <strong>Hunter's Lore</strong>: while a creature is marked by your <em>Hunter's Mark</em>, you automatically know whether that creature has any Immunities, Resistances, or Vulnerabilities, and if so, what they are. You also gain <strong>Hunter's Prey</strong>: choose one of the following options, swappable on a Short or Long Rest — <em>Colossus Slayer</em> (deal 1d8 extra damage once per turn to a target missing any hit points) or <em>Horde Breaker</em> (once per turn when you hit a creature, you can make one additional attack against a different creature within 5 feet of the first target).</p>
       </div>
     </div>
 
     <div class="tier-block tier-4">
-      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Apex Predator</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Foe Slayer</span></div>
       <div class="tier-body">
-        <p><strong>Foe Slayer.</strong> When you hit your Hunter's Mark target, you can add your Wisdom modifier to the attack roll or the damage roll (your choice). You can make this choice after seeing the roll but before any effects apply.</p>
-        <p>Once per Long Rest, you can cast <em>Swift Quiver</em> or <em>Steel Wind Strike</em> without expending a spell slot.</p>
-        <p>You gain <strong>Exceptional Training</strong>: your Beast companion (if any) gains an additional action each turn. If you have no Beast companion, you instead gain a <em>Primal Companion</em> as a Ranger Beastmaster (using your Proficiency Bonus for its stats) — a faithful creature that fights at your side.</p>
+        <p><strong>Foe Slayer.</strong> The damage die of your <em>Hunter's Mark</em> increases to a d10 (up from d6). This represents the full realization of your predatory focus — every marked creature is simply prey you haven't finished yet.</p>
+        <p>Your Hunter's Prey expands: you now have both the Colossus Slayer and Horde Breaker options active simultaneously, with no need to choose between them.</p>
+        <p><strong>Stalker's Flurry.</strong> Once per turn when you miss an attack roll, you can immediately make another attack roll against the same target as part of the same action.</p>
+        <p>Once per Long Rest, you can cast <em>Steel Wind Strike</em> without expending a spell slot, using Wisdom as your spellcasting ability.</p>
       </div>
     </div>
   </div>
@@ -632,7 +640,7 @@
   <!-- ══════════════════════════════════════════════ ROGUE -->
   <div class="feat-panel" id="rogue">
     <div class="feat-title-row">
-      <span class="feat-icon">🗡️</span>
+      
       <span class="feat-main-name">Shadow Hand</span>
       <span class="feat-class-label">Rogue</span>
     </div>
@@ -640,19 +648,19 @@
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
     <div class="tier-block tier-1">
-      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Cunning & Sneak</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Expertise & Sneak</span></div>
       <div class="tier-body">
         <p><strong>Sneak Attack.</strong> Once per turn when you hit with a weapon or unarmed attack and have advantage on the roll (or an ally is adjacent to the target and you don't have disadvantage), deal an extra 2d6 damage. If you already have Sneak Attack, increase it by 2d6 instead.</p>
-        <p><strong>Cunning Action.</strong> You can take the Dash, Disengage, or Hide action as a Bonus Action. If you already have Cunning Action, you can also use Sleight of Hand, Use an Object, or Use a Device as a Bonus Action.</p>
+        <p>Choose two skills you are proficient in and gain <strong>Expertise</strong> in them (double Proficiency Bonus). If you already have Expertise in both chosen skills, choose two more skills to gain proficiency in instead.</p>
       </div>
     </div>
 
     <div class="tier-block tier-2">
-      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Uncanny Dodge & Expertise</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Cunning Action & Uncanny Dodge</span></div>
       <div class="tier-body">
         <p>Your Sneak Attack increases by 1d6 (total: 3d6 from this feat).</p>
+        <p><strong>Cunning Action.</strong> You can take the Dash, Disengage, or Hide action as a Bonus Action. If you already have Cunning Action, you can also use Sleight of Hand, Use an Object, or Use a Device as a Bonus Action.</p>
         <p><strong>Uncanny Dodge.</strong> When an attacker you can see hits you with an attack, you can use your reaction to halve the attack's damage. If you already have this feature, you can also apply it to attacks against adjacent allies once per Short Rest.</p>
-        <p>Choose two skills you are proficient in and gain <strong>Expertise</strong> in them (double Proficiency Bonus). If you already have Expertise in both chosen skills, choose two more skills to gain proficiency in instead.</p>
       </div>
     </div>
 
@@ -679,7 +687,7 @@
   <!-- ══════════════════════════════════════════════ SORCERER -->
   <div class="feat-panel" id="sorcerer">
     <div class="feat-title-row">
-      <span class="feat-icon">✨</span>
+      
       <span class="feat-main-name">Wellspring of Power</span>
       <span class="feat-class-label">Sorcerer</span>
     </div>
@@ -725,7 +733,7 @@
   <!-- ══════════════════════════════════════════════ WARLOCK -->
   <div class="feat-panel" id="warlock">
     <div class="feat-title-row">
-      <span class="feat-icon">👁️</span>
+      
       <span class="feat-main-name">Eldritch Pact</span>
       <span class="feat-class-label">Warlock</span>
     </div>
@@ -733,37 +741,37 @@
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
     <div class="tier-block tier-1">
-      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Pact Magic</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Pact Magic & Invocations</span></div>
       <div class="tier-body">
-        <p>You gain two <strong>Pact Magic</strong> spell slots of a level equal to half your Proficiency Bonus (min 1st, max 5th), regained on a Short or Long Rest. You learn two Warlock spells (up to the slot level) and two <strong>Eldritch Invocations</strong>.</p>
-        <p>You know the <em>Eldritch Blast</em> cantrip. You use Charisma as your spellcasting ability for these spells.</p>
+        <p>You gain two <strong>Pact Magic</strong> spell slots of 2nd level, regained on a Short or Long Rest. You learn two Warlock spells of 2nd level or lower and two <strong>Eldritch Invocations</strong> of your choice. You use Charisma as your spellcasting ability.</p>
+        <p>You know one cantrip of your choice from the Warlock spell list. You use Charisma as your spellcasting ability for it.</p>
       </div>
     </div>
 
     <div class="tier-block tier-2">
-      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Deepened Pact</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Magical Cunning & Patron's Call</span></div>
       <div class="tier-body">
-        <p>You gain a third Pact Magic spell slot. You learn two additional Warlock spells and two additional Eldritch Invocations (four total from this feat).</p>
-        <p>Choose a <strong>Pact Boon</strong>: <em>Pact of the Blade</em> (summon a magical weapon bonded to you), <em>Pact of the Chain</em> (gain a familiar with enhanced statistics), or <em>Pact of the Tome</em> (a Book of Shadows containing three cantrips from any spell list).</p>
-        <p>You can apply two different Invocations to the same <em>Eldritch Blast</em> cast.</p>
+        <p>Your Pact Magic slots increase to <strong>3rd level</strong>. You learn two additional Warlock spells of 3rd level or lower and two additional Eldritch Invocations (four total from this feat).</p>
+        <p><strong>Magical Cunning.</strong> Once per Long Rest, you can spend 1 minute in communion with your patron to recover expended Pact Magic spell slots — you regain a number of slots equal to half your maximum (rounded up). This is your patron reaching back through the pact when you need it most.</p>
+        <p>Choose a <strong>Patron</strong> (Archfey, Fiend, Great Old One, or Celestial). You gain that patron's always-prepared Expanded Spell List and its <strong>3rd-level subclass feature</strong>. The patron's spells use Charisma as your spellcasting ability.</p>
       </div>
     </div>
 
     <div class="tier-block tier-3">
-      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Patron's Favor</span></div>
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Contact Patron & Patron's Favor</span></div>
       <div class="tier-body">
-        <p>You gain a fourth Pact Magic slot. You learn two additional Warlock spells and two additional Eldritch Invocations (six total from this feat).</p>
-        <p>Choose a <strong>Patron</strong> (Archfey, Fiend, Great Old One, or Celestial). You gain that patron's Expanded Spell List (those spells are always prepared for you) and its 6th-level subclass feature.</p>
-        <p><strong>Dark One's Own Luck</strong> (or patron equivalent): once per Short Rest, when you make an ability check or saving throw, you can add 1d10 to the result.</p>
+        <p>You gain a third Pact Magic spell slot, and your Pact Magic slots increase to <strong>4th level</strong>. You learn two additional Warlock spells of 4th level or lower and two additional Eldritch Invocations (six total from this feat).</p>
+        <p><strong>Contact Patron.</strong> You always have <em>Contact Other Plane</em> prepared. Once per Long Rest you can cast it without expending a spell slot to speak directly with your patron — and you automatically succeed on the Intelligence saving throw the spell normally requires.</p>
+        <p>You gain your chosen Patron's <strong>6th-level subclass feature</strong>.</p>
       </div>
     </div>
 
     <div class="tier-block tier-4">
       <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Eldritch Master</span></div>
       <div class="tier-body">
-        <p>You gain a fifth Pact Magic slot. You learn two additional Warlock spells and two additional Eldritch Invocations (eight total from this feat). Your Pact Magic slot level increases by 1.</p>
-        <p><strong>Eldritch Master.</strong> Once per Long Rest, you can entreat your patron for aid, spending 1 minute in prayer or meditation. You regain all expended Pact Magic slots without requiring a rest.</p>
-        <p>You gain your chosen Patron's <strong>10th-level subclass feature</strong>, representing the culmination of your pact and your patron's investment in you.</p>
+        <p>You gain a fourth Pact Magic spell slot, and your Pact Magic slots increase to <strong>5th level</strong>. You learn two additional Warlock spells of 5th level or lower and two additional Eldritch Invocations (eight total from this feat).</p>
+        <p><strong>Eldritch Master.</strong> Your Magical Cunning reaches its apex: once per Long Rest, when you use Magical Cunning, you recover <em>all</em> expended Pact Magic slots instead of half. The ritual still takes 1 minute. Your patron does not give this power freely — but at this level, the pact runs so deep that refusal is no longer an option for either of you.</p>
+        <p>You gain your chosen Patron's <strong>10th-level subclass feature</strong>, representing the full realization of your pact and your patron's investment in you.</p>
       </div>
     </div>
   </div>
@@ -771,7 +779,7 @@
   <!-- ══════════════════════════════════════════════ WIZARD -->
   <div class="feat-panel" id="wizard">
     <div class="feat-title-row">
-      <span class="feat-icon">📖</span>
+      
       <span class="feat-main-name">Arcane Scholar</span>
       <span class="feat-class-label">Wizard</span>
     </div>
@@ -791,7 +799,7 @@
       <div class="tier-body">
         <p>Your spellbook gains 4 additional wizard spells (up to 5th level). You can now prepare spells up to 5th level from your spellbook.</p>
         <p><strong>Arcane Recovery.</strong> Once per Long Rest, after a Short Rest, you can recover expended spell slots with a combined level equal to or less than half your Proficiency Bonus (rounded up). You cannot recover slots above 5th level this way.</p>
-        <p>Choose an <strong>Arcane Tradition</strong>. You gain that school's Savant feature (halved time and gold to copy that school's spells) and its 2nd-level school feature.</p>
+        <p>Choose an <strong>Arcane Tradition</strong>. You gain that school's Savant feature (halved time and gold to copy that school's spells) and its <strong>3rd-level school feature</strong>.</p>
       </div>
     </div>
 
@@ -815,9 +823,9 @@
   </div>
 
   <!-- ══════════════════════════════════════════════ ARTIFICER -->
-  <div class="feat-panel" id="artificer">
+  <div class="feat-panel active" id="artificer">
     <div class="feat-title-row">
-      <span class="feat-icon">⚙️</span>
+      
       <span class="feat-main-name">Arcane Inventor</span>
       <span class="feat-class-label">Artificer</span>
     </div>
