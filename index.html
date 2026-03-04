@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiered Class Feats — D&D 5e 2024</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f5e9c9;
+    --parchment-dark: #e8d5a3;
+    --ink: #1c1008;
+    --ink-soft: #3d2b1a;
+    --red: #8b1a1a;
+    --gold: #b8860b;
+    --gold-light: #d4a827;
+    --rule: #7a5c2e;
+    --t1: #4a7c3f;
+    --t2: #2a5f8a;
+    --t3: #7a3f8a;
+    --t4: #8b1a1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1208;
+    font-family: 'IM Fell English', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--parchment);
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 0 6px #1a1208, 0 0 0 9px var(--gold), inset 0 0 80px rgba(0,0,0,0.07);
+    padding: 3rem 3.5rem;
+  }
+  header {
+    text-align: center;
+    border-bottom: 3px double var(--rule);
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  header h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2rem;
+    color: var(--red);
+    text-shadow: 1px 1px 0 var(--gold);
+    line-height: 1.2;
+  }
+  header .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--rule);
+    margin-top: 0.5rem;
+    font-style: italic;
+    letter-spacing: 0.08em;
+  }
+
+  /* Tier Legend */
+  .tier-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    padding: 0.8rem 0 1.2rem;
+    border-bottom: 1px solid var(--parchment-dark);
+    margin-bottom: 1.5rem;
+  }
+  .tier-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.25em 0.8em;
+    border-radius: 2px;
+    color: white;
+  }
+  .t1 { background: var(--t1); }
+  .t2 { background: var(--t2); }
+  .t3 { background: var(--t3); }
+  .t4 { background: var(--t4); }
+
+  /* Class nav tabs */
+  .class-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  .class-tab {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    padding: 0.3em 0.8em;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .class-tab:hover, .class-tab.active {
+    background: var(--red);
+    color: var(--parchment);
+    border-color: var(--red);
+  }
+
+  /* Feat display */
+  .feat-panel { display: none; }
+  .feat-panel.active { display: block; }
+
+  .feat-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+  .feat-icon { font-size: 1.6rem; line-height: 1; }
+  .feat-main-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--red);
+  }
+  .feat-class-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.2em 0.6em;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    margin-left: auto;
+  }
+  .feat-flavor {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--parchment-dark);
+    padding-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .tier-block {
+    margin-bottom: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255,255,255,0.25);
+    border-left: 4px solid;
+    position: relative;
+  }
+  .tier-block.tier-1 { border-color: var(--t1); }
+  .tier-block.tier-2 { border-color: var(--t2); }
+  .tier-block.tier-3 { border-color: var(--t3); }
+  .tier-block.tier-4 { border-color: var(--t4); background: rgba(139,26,26,0.04); }
+
+  .tier-block-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .tier-pip {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    padding: 0.15em 0.55em;
+    border-radius: 2px;
+    color: white;
+    white-space: nowrap;
+  }
+  .tier-block.tier-1 .tier-pip { background: var(--t1); }
+  .tier-block.tier-2 .tier-pip { background: var(--t2); }
+  .tier-block.tier-3 .tier-pip { background: var(--t3); }
+  .tier-block.tier-4 .tier-pip { background: var(--t4); }
+
+  .tier-feature-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+  .tier-body {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+  .tier-body p { margin-bottom: 0.4rem; }
+  .tier-body p:last-child { margin-bottom: 0; }
+  .tier-body strong {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--red);
+    letter-spacing: 0.04em;
+  }
+  .tier-body em { color: var(--ink-soft); }
+
+  .cumulative-note {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+    color: var(--rule);
+    font-style: italic;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 3px double var(--rule);
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    color: var(--rule);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 1.5rem 1.2rem; }
+    header h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Tiered Class Feats</h1>
+    <div class="subtitle">D&D 5e (2024) · Each feat evolves at Levels 5, 10, 15 & 20 · Higher tiers require the previous</div>
+  </header>
+
+  <div class="tier-legend">
+    <span class="tier-badge t1">Tier I · Level 5 · Initiate</span>
+    <span class="tier-badge t2">Tier II · Level 10 · Adept</span>
+    <span class="tier-badge t3">Tier III · Level 15 · Master</span>
+    <span class="tier-badge t4">Tier IV · Level 20 · Paragon</span>
+  </div>
+
+  <div class="class-nav">
+    <button class="class-tab active" onclick="show('barbarian')">🪓 Barbarian</button>
+    <button class="class-tab" onclick="show('bard')">🎶 Bard</button>
+    <button class="class-tab" onclick="show('cleric')">⛪ Cleric</button>
+    <button class="class-tab" onclick="show('druid')">🌿 Druid</button>
+    <button class="class-tab" onclick="show('fighter')">⚔️ Fighter</button>
+    <button class="class-tab" onclick="show('monk')">👊 Monk</button>
+    <button class="class-tab" onclick="show('paladin')">🛡️ Paladin</button>
+    <button class="class-tab" onclick="show('ranger')">🏹 Ranger</button>
+    <button class="class-tab" onclick="show('rogue')">🗡️ Rogue</button>
+    <button class="class-tab" onclick="show('sorcerer')">✨ Sorcerer</button>
+    <button class="class-tab" onclick="show('warlock')">👁️ Warlock</button>
+    <button class="class-tab" onclick="show('wizard')">📖 Wizard</button>
+    <button class="class-tab" onclick="show('artificer')">⚙️ Artificer</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ BARBARIAN -->
+  <div class="feat-panel active" id="barbarian">
+    <div class="feat-title-row">
+      <span class="feat-icon">🪓</span>
+      <span class="feat-main-name">Primal Fury</span>
+      <span class="feat-class-label">Barbarian</span>
+    </div>
+    <p class="feat-flavor">The primal rage that drives the greatest warriors stirs within you. Each time you deepen this bond, the fury grows harder to contain — and harder to stop.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">First Blood</span></div>
+      <div class="tier-body">
+        <p>You can <strong>Rage</strong> as a Barbarian. You have Rage uses equal to your Proficiency Bonus, regained on a Long Rest (you also regain one use on a Short Rest). Your Rage Damage bonus is +2. While raging, you have resistance to Bludgeoning, Piercing, and Slashing damage.</p>
+        <p>Rage lasts until the end of your next turn. You can extend it each round by making an attack roll against an enemy, forcing an enemy to make a saving throw, or taking a Bonus Action to extend it. Rage ends early only if you don Heavy Armor or have the <em>Unconscious</em> condition (not merely Incapacitated). As part of the Bonus Action to enter Rage, you can move up to half your Speed.</p>
+        <p>You gain proficiency in Athletics. If you already have proficiency, you gain expertise instead.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Reckless Abandon</span></div>
+      <div class="tier-body">
+        <p>Your Rage Damage bonus increases to +3. You gain the <strong>Reckless Attack</strong> feature: on your first attack each turn, you may attack recklessly to gain advantage on all Strength-based attacks this turn, but attack rolls against you have advantage until your next turn.</p>
+        <p><strong>Brutal Strike.</strong> If you use Reckless Attack while Raging, you can forgo the advantage on one Strength-based attack. If that attack hits, it deals an extra 1d10 damage and you apply one Brutal Strike effect of your choice: <em>Forceful Blow</em> (target is pushed 15 feet away; you can move half your Speed toward them without provoking Opportunity Attacks) or <em>Hamstring Blow</em> (target's Speed is reduced by 15 feet until the start of your next turn).</p>
+        <p>While raging, you are immune to the Charmed and Frightened conditions, and you have advantage on Strength checks and Strength saving throws.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Brutal Strike</span></div>
+      <div class="tier-body">
+        <p>Your Rage Damage bonus increases to +4. Your <strong>Brutal Strike</strong> gains two additional effect options: <em>Staggering Blow</em> (target has Disadvantage on its next saving throw and can't make Opportunity Attacks until the start of your next turn) and <em>Sundering Blow</em> (the next attack roll made against the target by another creature gains a +5 bonus). You can now apply two different Brutal Strike effects on the same hit.</p>
+        <p>You gain <strong>Danger Sense</strong>: you have advantage on Dexterity saving throws against effects you can see, provided you are not Blinded, Deafened, or Incapacitated.</p>
+        <p>Your Rage now lasts for its full 10-minute duration without needing to be extended each round. It ends only if you don Heavy Armor, have the Unconscious condition, or choose to end it.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Indomitable Might</span></div>
+      <div class="tier-body">
+        <p>Your Rage Damage bonus increases to +5. You gain <strong>Relentless Rage</strong>: if you drop to 0 hit points while raging and don't die outright, you can make a DC 10 Constitution saving throw (DC increases by 5 each time you use this feature between Long Rests; resets on Short or Long Rest). On a success, your hit points are restored to a number equal to twice your Proficiency Bonus × 2, keeping you in the fight.</p>
+        <p>Once per Long Rest, when you roll Initiative, you regain all expended uses of Rage.</p>
+        <p>Additionally, if your total for a Strength check or Strength saving throw is less than your Strength score, you can use your Strength score in place of the total.</p>
+        <p>You gain one <strong>Primal Path feature</strong> of your choice from the Path of the Berserker or Path of the Wild Heart subclasses (subject to DM approval).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ BARD -->
+  <div class="feat-panel" id="bard">
+    <div class="feat-title-row">
+      <span class="feat-icon">🎶</span>
+      <span class="feat-main-name">Voice of Legend</span>
+      <span class="feat-class-label">Bard</span>
+    </div>
+    <p class="feat-flavor">You have learned to weave magic into your words and performances. A true legend is not born — they are composed, one verse at a time.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Bardic Spark</span></div>
+      <div class="tier-body">
+        <p>You gain <strong>Bardic Inspiration</strong> dice equal to your Charisma modifier (minimum 1), regained on a Long Rest. The die is a d6. A creature that has a Bardic Inspiration die from you can roll it and add the result to one ability check, attack roll, or saving throw.</p>
+        <p>You gain proficiency in Performance and one instrument of your choice. If you already have Performance proficiency, gain expertise instead.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Jack of All Trades</span></div>
+      <div class="tier-body">
+        <p>Your Bardic Inspiration die increases to a d8, and uses are now regained on a Short or Long Rest.</p>
+        <p>You gain <strong>Jack of All Trades</strong>: add half your Proficiency Bonus to any ability check that doesn't already include your full Proficiency Bonus. If you already have this feature, choose two skills you are proficient in and gain expertise in them instead.</p>
+        <p>You learn two additional cantrips from any class spell list.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Cutting Words & Countercharm</span></div>
+      <div class="tier-body">
+        <p>Your Bardic Inspiration die increases to a d10.</p>
+        <p>You gain <strong>Cutting Words</strong>: when a creature you can see within 60 feet makes an attack roll, ability check, or damage roll, you can use your reaction and expend one Bardic Inspiration die to subtract the result from the roll.</p>
+        <p>You gain <strong>Countercharm</strong>: as an action, you can begin a performance that lasts until the start of your next turn. During this time, any friendly creature within 30 feet that can hear you has advantage on saving throws against being Frightened or Charmed.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Magical Secrets</span></div>
+      <div class="tier-body">
+        <p>Your Bardic Inspiration die increases to a d12.</p>
+        <p>You gain <strong>Magical Secrets</strong>: choose four spells from any class's spell list (of a level you can cast). These spells are always prepared for you and count as spells of your primary class. You can change these choices whenever you gain a level.</p>
+        <p>Additionally, once per Long Rest, when a creature uses a Bardic Inspiration die you gave them, you can choose to not expend the die — it is not consumed on that use.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ CLERIC -->
+  <div class="feat-panel" id="cleric">
+    <div class="feat-title-row">
+      <span class="feat-icon">⛪</span>
+      <span class="feat-main-name">Divine Conduit</span>
+      <span class="feat-class-label">Cleric</span>
+    </div>
+    <p class="feat-flavor">A divine power has chosen you as its vessel. You did not seek this — but the god found you worthy regardless.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Chosen Vessel</span></div>
+      <div class="tier-body">
+        <p>You gain one <strong>Channel Divinity</strong> use, regained on a Short or Long Rest. You gain two options: <em>Divine Spark</em> (as a Magic action, point your Holy Symbol at a creature within 30 feet — roll 1d8 + your Wisdom modifier; either restore that many hit points to the creature, or force a Constitution saving throw; on a failure, the creature takes Radiant or Necrotic damage equal to that total; on a success, it takes half) and <em>Turn Undead</em> (as a Magic action, each Undead of your choice within 30 feet must make a Wisdom saving throw or be Turned for 1 minute — they must Dash away and are Incapacitated while Turned).</p>
+        <p>You gain proficiency in Religion. If you already have proficiency, gain expertise instead.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Sacred Domain</span></div>
+      <div class="tier-body">
+        <p>You gain a second Channel Divinity use (you now regain one use on a Short Rest and all uses on a Long Rest). The Divine Spark improves to 2d8.</p>
+        <p>Choose a <strong>Divine Domain</strong> (Life, Light, Trickery, or War — or another with DM approval). You gain that domain's two 3rd-level Domain Spells (in 2024, subclasses begin at level 3) — these are always prepared for you and use your primary spellcasting ability, or Wisdom if you lack one. You also gain the domain's Channel Divinity option available at 3rd level.</p>
+        <p>Choose one option for <strong>Blessed Strikes</strong>: either <em>Divine Strike</em> (once per turn when you hit with a weapon, deal an extra 1d8 Radiant or Necrotic damage) or <em>Potent Spellcasting</em> (add your Wisdom modifier to damage you deal with any Cleric cantrip).</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Holy Resilience</span></div>
+      <div class="tier-body">
+        <p>You gain a third Channel Divinity use. Divine Spark improves to 3d8.</p>
+        <p>You gain <strong>Divine Intervention</strong>: once per Long Rest, as a Magic action, choose any Cleric spell of 5th level or lower that doesn't require a Reaction to cast. You cast it immediately without expending a spell slot or requiring Material components. There is no roll — your deity answers. This resets on a Long Rest.</p>
+        <p>You gain resistance to Radiant and Necrotic damage.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Avatar of Faith</span></div>
+      <div class="tier-body">
+        <p>Divine Spark improves to 4d8. You gain your chosen Domain's 6th-level subclass feature and its next set of Domain Spells (always prepared).</p>
+        <p>Your Blessed Strikes choice improves: if you chose <em>Divine Strike</em>, it now deals 2d8 extra damage. If you chose <em>Potent Spellcasting</em>, when you deal cantrip damage you can also grant yourself or a nearby ally Temporary Hit Points equal to twice your Wisdom modifier.</p>
+        <p><strong>Greater Divine Intervention.</strong> When you use Divine Intervention, you may choose the <em>Wish</em> spell instead of a 5th-level or lower Cleric spell. If you do, you cannot use Divine Intervention again until you finish 2d4 Long Rests. This represents your deity channeling power beyond mortal reckoning through you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ DRUID -->
+  <div class="feat-panel" id="druid">
+    <div class="feat-title-row">
+      <span class="feat-icon">🌿</span>
+      <span class="feat-main-name">Child of the Wild</span>
+      <span class="feat-class-label">Druid</span>
+    </div>
+    <p class="feat-flavor">The boundary between yourself and nature grows thinner with each passing season. Eventually, you will wonder where the wild ends and you begin.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Wild Shape</span></div>
+      <div class="tier-body">
+        <p>You can use <strong>Wild Shape</strong> as a Bonus Action twice per Long Rest, transforming into a Beast of CR 1/2 or lower from your list of Known Forms (you begin with two Known Forms, swappable on a Long Rest). You revert if you drop to 0 HP or after 1 hour. You cannot cast spells while transformed, but you can speak.</p>
+        <p>You can communicate simple concepts (not language) with Beasts and Plants. You gain proficiency in Nature. If you already have it, gain expertise instead.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Deeper Wilds</span></div>
+      <div class="tier-body">
+        <p>Wild Shape uses increase to equal your Proficiency Bonus, regained on a Short or Long Rest. Your Known Forms expand — you can now include Beasts of CR 1 or lower (or CR equal to half your Proficiency Bonus, whichever is higher), and your forms can have a swim or climb speed. You can change your Known Forms whenever you finish a Long Rest.</p>
+        <p>You learn the <em>Speak with Animals</em> spell and it is always prepared for you. You also learn two Druid cantrips if you don't already know them.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Beast Spells</span></div>
+      <div class="tier-body">
+        <p>You can now transform into Beasts up to CR 3, and your forms can have a fly speed. Wild Shape duration extends to 3 hours.</p>
+        <p>You gain <strong>Beast Spells</strong>: you can cast Druid spells that require no material components while in Wild Shape form, using your beast body's movements, vocalizations, and concentration.</p>
+        <p>You gain <strong>Timeless Body</strong>: you no longer age, cannot be magically aged, and require only half the food and water a normal humanoid does.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Archdruid's Mantle</span></div>
+      <div class="tier-body">
+        <p>You can transform into Beasts of CR 6 or lower. When you revert from Wild Shape, you regain hit points equal to three times your Proficiency Bonus.</p>
+        <p>You gain two additional Wild Shape uses specifically for casting <strong>Elemental Wild Shape</strong>: you can expend two Wild Shape uses to transform into an Air, Earth, Fire, or Water Elemental instead of a Beast.</p>
+        <p>Once per Long Rest, you can cast one Druid spell of 5th level or lower without expending a spell slot.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ FIGHTER -->
+  <div class="feat-panel" id="fighter">
+    <div class="feat-title-row">
+      <span class="feat-icon">⚔️</span>
+      <span class="feat-main-name">Weapon Master</span>
+      <span class="feat-class-label">Fighter</span>
+    </div>
+    <p class="feat-flavor">The battlefield is your classroom. You have bled to learn what no academy can teach — the instinct to win.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Combat Training</span></div>
+      <div class="tier-body">
+        <p>You gain a pool of <strong>Superiority Dice</strong> (d8s) equal to your Proficiency Bonus, regained on a Short or Long Rest. You learn three Maneuvers from the Battle Master list. Save DC = 8 + Proficiency Bonus + Strength or Dexterity modifier.</p>
+        <p>You gain <strong>Second Wind</strong>: as a Bonus Action, regain 1d10 + your fighter level (or Proficiency Bonus × 2 if you have no fighter levels) hit points. Usable once per Short Rest.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Action Surge</span></div>
+      <div class="tier-body">
+        <p>Your Superiority Dice increase to d10s. You learn two additional Maneuvers (five total).</p>
+        <p>You gain <strong>Action Surge</strong>: once per Short Rest, you can take one additional action on your turn. This additional action cannot be used to take the Magic action (casting spells or activating magical features).</p>
+        <p>You gain one <strong>Fighting Style</strong> feat of your choice (Archery, Defense, Dueling, Great Weapon Fighting, Protection, or Two-Weapon Fighting).</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Indomitable</span></div>
+      <div class="tier-body">
+        <p>Your Superiority Dice increase to d12s. You learn two additional Maneuvers (seven total).</p>
+        <p>You gain <strong>Indomitable</strong>: once per Long Rest, when you fail a saving throw, you can reroll it and must use the new result. At this tier you can use this feature twice per Long Rest.</p>
+        <p>You gain an <strong>Extra Attack</strong> for the purposes of this feat: when you take the Attack action, you can make one additional attack as part of that action (this stacks with your class's Extra Attack if you already have it, up to a maximum of three total attacks).</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Legendary Warrior</span></div>
+      <div class="tier-body">
+        <p>You can use Action Surge twice per Short Rest (but still only once per turn). You can use Indomitable three times per Long Rest.</p>
+        <p>You gain <strong>Relentless</strong>: at the start of each of your turns, if you have no Superiority Dice remaining, you regain one Superiority Die.</p>
+        <p>Choose one <strong>Martial Archetype feature</strong> from Champion (Improved Critical), Battlemaster (Know Your Enemy), or Eldritch Knight (Weapon Bond) — subject to DM approval.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ MONK -->
+  <div class="feat-panel" id="monk">
+    <div class="feat-title-row">
+      <span class="feat-icon">👊</span>
+      <span class="feat-main-name">Disciple of the Way</span>
+      <span class="feat-class-label">Monk</span>
+    </div>
+    <p class="feat-flavor">You have turned inward to find power no weapon can grant. Each breath is a choice; each strike, a philosophy made physical.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Focus Awakening</span></div>
+      <div class="tier-body">
+        <p>You gain <strong>Focus Points</strong> equal to your Proficiency Bonus, regained on a Short or Long Rest. You can spend them on: <em>Flurry of Blows</em> (1 Focus — make two Unarmed Strikes as a Bonus Action at any time, no Attack action required first), <em>Patient Defense</em> (free: Disengage as a Bonus Action; or 1 Focus: Disengage and Dodge as a single Bonus Action), and <em>Step of the Wind</em> (free: Dash as a Bonus Action; or 1 Focus: Dash and Disengage as a single Bonus Action with doubled jump distance).</p>
+        <p><strong>Martial Arts.</strong> Your unarmed strikes deal 1d6 damage. You can use Dexterity for unarmed attack rolls, and for setting the DC of grapples and shoves. You can make one Unarmed Strike as a Bonus Action whenever you take the Attack action.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Unarmored Movement & Deflect</span></div>
+      <div class="tier-body">
+        <p>Your Focus Points increase by your Proficiency Bonus (total: PB × 2). Your Martial Arts die increases to d8. You gain <strong>Uncanny Metabolism</strong>: once per Long Rest, when you roll Initiative, you can regain Focus Points equal to your Proficiency Bonus.</p>
+        <p><strong>Unarmored Movement.</strong> Your speed increases by 15 feet when you are wearing no armor and not using a shield. You can move along vertical surfaces and across liquids without falling (Acrobatic Movement).</p>
+        <p><strong>Deflect Attacks.</strong> When you are hit by an attack roll, you can use your Reaction to reduce the damage by 1d10 + your Dexterity modifier + your Proficiency Bonus. If you reduce the damage to 0, you can spend 1 Focus Point to redirect the energy — making a ranged attack (range 20/60 ft.) as part of the same Reaction for 1d6 + Dexterity modifier Force damage.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Stillness of Mind & Stunning Strike</span></div>
+      <div class="tier-body">
+        <p>Your Focus Points increase by your Proficiency Bonus (total: PB × 3). Your Martial Arts die increases to d10.</p>
+        <p><strong>Stunning Strike.</strong> Once per turn when you hit a creature with a melee attack, you can spend 1 Focus Point to attempt a stunning strike. The target must succeed on a Constitution saving throw (DC = 8 + PB + Wisdom modifier) or have the Stunned condition until the start of your next turn.</p>
+        <p><strong>Stillness of Mind.</strong> As a Bonus Action, you can end one effect on yourself causing you to be Charmed or Frightened.</p>
+        <p>You gain <strong>Evasion</strong>: when you are subjected to a Dexterity saving throw for half damage, you take no damage on a success and half on a failure.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Empty Body</span></div>
+      <div class="tier-body">
+        <p>Your Focus Points increase by your Proficiency Bonus (total: PB × 4). Your Martial Arts die increases to d12.</p>
+        <p><strong>Empty Body.</strong> You can spend 4 Focus Points to gain the Invisible condition for 1 minute. During this time you also have resistance to all damage except Force damage.</p>
+        <p><strong>Perfect Self.</strong> Your Uncanny Metabolism improves: if you have fewer than 4 Focus Points when you roll Initiative (and Uncanny Metabolism is expended), you regain points until you have 4.</p>
+        <p>Choose one <strong>Monastic Tradition feature</strong> from Warrior of the Open Hand (Wholeness of Body), Warrior of Shadow (Shadow Step), or Warrior of the Elements (one Elemental Discipline of your choice) — subject to DM approval.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ PALADIN -->
+  <div class="feat-panel" id="paladin">
+    <div class="feat-title-row">
+      <span class="feat-icon">🛡️</span>
+      <span class="feat-main-name">Oath Bound</span>
+      <span class="feat-class-label">Paladin</span>
+    </div>
+    <p class="feat-flavor">You have sworn a sacred oath, and the oath has claimed you in return. Its power grows with every promise kept — and exacts its toll on every promise broken.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Lay on Hands & Smite</span></div>
+      <div class="tier-body">
+        <p><strong>Lay on Hands.</strong> You gain a healing pool equal to 5 × your Proficiency Bonus, regained on a Long Rest. As a <em>Bonus Action</em>, restore any amount from the pool to a creature you touch, or spend 5 points to cure one disease or remove one poison affecting them.</p>
+        <p><strong>Divine Smite.</strong> Divine Smite is now a spell. When you hit a creature with a melee weapon or Unarmed Strike, you can expend a spell slot as a <em>Bonus Action</em> on that same turn to deal extra Radiant damage: 2d8 per slot level (3d8 against Undead and Fiends). Once per turn.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Divine Health & Aura of Protection</span></div>
+      <div class="tier-body">
+        <p>Your Lay on Hands pool increases to 10 × your Proficiency Bonus.</p>
+        <p><strong>Divine Health.</strong> You are immune to disease.</p>
+        <p><strong>Aura of Protection.</strong> Whenever you or a friendly creature within 10 feet makes a saving throw, you may add your Charisma modifier (minimum +1) to the roll. You must be conscious to grant this benefit.</p>
+        <p>You gain proficiency in Religion. If you already have it, gain expertise instead.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Sacred Oath Features</span></div>
+      <div class="tier-body">
+        <p>Your Lay on Hands pool increases to 15 × your Proficiency Bonus. Your Aura of Protection extends to 30 feet.</p>
+        <p>Choose a <strong>Sacred Oath</strong> (Devotion, Ancients, Vengeance, or Glory). You gain that oath's Channel Divinity options (2 uses, regained on Short or Long Rest) and its two 3rd-level Oath Spells (always prepared, using your primary casting ability or Charisma).</p>
+        <p>You gain <strong>Aura of Courage</strong>: friendly creatures within 30 feet cannot be Frightened while you are conscious.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Sacred Champion</span></div>
+      <div class="tier-body">
+        <p>Your Lay on Hands pool increases to 20 × your Proficiency Bonus.</p>
+        <p>You gain your chosen Sacred Oath's <strong>Oath 5th-level spells</strong> (always prepared) and its <strong>7th-level subclass feature</strong>.</p>
+        <p><strong>Sacred Champion.</strong> Once per Long Rest, as a Bonus Action, you radiate an aura of divine power for 1 minute. During this time: your weapon attacks deal an extra 1d8 radiant damage; you and allies within 30 feet have advantage on death saving throws; and your Lay on Hands pool restores an additional 5 hit points per use.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ RANGER -->
+  <div class="feat-panel" id="ranger">
+    <div class="feat-title-row">
+      <span class="feat-icon">🏹</span>
+      <span class="feat-main-name">Wanderer's Eye</span>
+      <span class="feat-class-label">Ranger</span>
+    </div>
+    <p class="feat-flavor">The wilderness does not forgive ignorance. You have learned to read every track, every wind shift, every silence — and to strike before your prey knows you are there.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Hunter's Mark & Favored Terrain</span></div>
+      <div class="tier-body">
+        <p><strong>Hunter's Mark.</strong> You always have <em>Hunter's Mark</em> prepared. You can cast it without a spell slot a number of times equal to your Proficiency Bonus per Long Rest, using Wisdom as your spellcasting ability. When you hit the marked creature, it takes an extra 1d6 Force damage (not weapon type — Force is the 2024 default).</p>
+        <p><strong>Favored Terrain.</strong> Choose two terrain types. You ignore nonmagical difficult terrain there, cannot become lost by nonmagical means, and have advantage on Perception and Survival checks in those environments.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Primeval Awareness</span></div>
+      <div class="tier-body">
+        <p><strong>Hunter's Mark</strong> no longer requires concentration for you. When your marked target dies, you can move the mark to a new creature within 30 feet as a Bonus Action (no action or slot required).</p>
+        <p><strong>Primeval Awareness.</strong> As an action, you can attune to the land around you. For 1 minute, you know the location (but not exact position) of any Aberrations, Celestials, Dragons, Elementals, Fey, Fiends, or Undead within 1 mile of you (6 miles in your Favored Terrain). Usable once per Short Rest.</p>
+        <p>You learn two Ranger spells of your choice (up to 2nd level), always prepared.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Foe Slayer</span></div>
+      <div class="tier-body">
+        <p>Hunter's Mark now deals an extra 1d10 Force damage (up from 1d6) against the marked target.</p>
+        <p>You gain two <strong>Hunter's Prey</strong> options of your choice: <em>Colossus Slayer</em> (1d8 extra damage against a creature below max HP, once per turn), <em>Giant Killer</em> (reaction attack when a Large+ creature misses you), or <em>Horde Breaker</em> (one extra attack against a second creature within 5 feet of the first target).</p>
+        <p>Choose one additional Favored Terrain type. You gain <strong>Vanish</strong>: you can Hide as a Bonus Action and cannot be tracked by nonmagical means unless you choose to leave a trail.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Apex Predator</span></div>
+      <div class="tier-body">
+        <p><strong>Foe Slayer.</strong> When you hit your Hunter's Mark target, you can add your Wisdom modifier to the attack roll or the damage roll (your choice). You can make this choice after seeing the roll but before any effects apply.</p>
+        <p>Once per Long Rest, you can cast <em>Swift Quiver</em> or <em>Steel Wind Strike</em> without expending a spell slot.</p>
+        <p>You gain <strong>Exceptional Training</strong>: your Beast companion (if any) gains an additional action each turn. If you have no Beast companion, you instead gain a <em>Primal Companion</em> as a Ranger Beastmaster (using your Proficiency Bonus for its stats) — a faithful creature that fights at your side.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ ROGUE -->
+  <div class="feat-panel" id="rogue">
+    <div class="feat-title-row">
+      <span class="feat-icon">🗡️</span>
+      <span class="feat-main-name">Shadow Hand</span>
+      <span class="feat-class-label">Rogue</span>
+    </div>
+    <p class="feat-flavor">Opportunity is the only weapon that never misses. You have learned to see the opening that others cannot — and to make it count.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Cunning & Sneak</span></div>
+      <div class="tier-body">
+        <p><strong>Sneak Attack.</strong> Once per turn when you hit with a weapon or unarmed attack and have advantage on the roll (or an ally is adjacent to the target and you don't have disadvantage), deal an extra 2d6 damage. If you already have Sneak Attack, increase it by 2d6 instead.</p>
+        <p><strong>Cunning Action.</strong> You can take the Dash, Disengage, or Hide action as a Bonus Action. If you already have Cunning Action, you can also use Sleight of Hand, Use an Object, or Use a Device as a Bonus Action.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Uncanny Dodge & Expertise</span></div>
+      <div class="tier-body">
+        <p>Your Sneak Attack increases by 1d6 (total: 3d6 from this feat).</p>
+        <p><strong>Uncanny Dodge.</strong> When an attacker you can see hits you with an attack, you can use your reaction to halve the attack's damage. If you already have this feature, you can also apply it to attacks against adjacent allies once per Short Rest.</p>
+        <p>Choose two skills you are proficient in and gain <strong>Expertise</strong> in them (double Proficiency Bonus). If you already have Expertise in both chosen skills, choose two more skills to gain proficiency in instead.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Cunning Strike & Reliable Talent</span></div>
+      <div class="tier-body">
+        <p>Your Sneak Attack increases by 1d6 (total: 4d6 from this feat).</p>
+        <p><strong>Evasion.</strong> When subjected to a Dexterity saving throw for half damage, you take no damage on a success and half on a failure.</p>
+        <p><strong>Cunning Strike.</strong> When you deal Sneak Attack damage, you can forgo 1d6 of that damage to apply one of the following effects: <em>Disarm</em> (target makes a Dexterity save or drops one item of your choice), <em>Trip</em> (target makes a Dexterity save or gains the Prone condition), or <em>Withdraw</em> (move up to half your Speed as part of the attack without provoking Opportunity Attacks).</p>
+        <p><strong>Reliable Talent.</strong> Whenever you make an ability check that uses your full Proficiency Bonus, treat any d20 result of 9 or lower as a 10.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Stroke of Luck</span></div>
+      <div class="tier-body">
+        <p>Your Sneak Attack increases by 1d6 (total: 5d6 from this feat).</p>
+        <p><strong>Stroke of Luck.</strong> Once per Short Rest: if you miss an attack, you can turn it into a hit. Or, if you fail an ability check, you can treat the d20 result as a 20.</p>
+        <p>Choose one <strong>Roguish Archetype feature</strong> from Thief (Supreme Sneak or Use Magic Device), Assassin (Assassinate), or Arcane Trickster (Mage Hand Legerdemain or one 3rd-level spell from the wizard list that you can cast once per Long Rest) — subject to DM approval.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ SORCERER -->
+  <div class="feat-panel" id="sorcerer">
+    <div class="feat-title-row">
+      <span class="feat-icon">✨</span>
+      <span class="feat-main-name">Wellspring of Power</span>
+      <span class="feat-class-label">Sorcerer</span>
+    </div>
+    <p class="feat-flavor">Magic does not flow through you. It erupts. The question has never been whether you have the power — only whether you can keep it from consuming you.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Sorcery Points & Metamagic</span></div>
+      <div class="tier-body">
+        <p>You gain <strong>Sorcery Points</strong> equal to your Proficiency Bonus, regained on a Long Rest. You learn two <strong>Metamagic</strong> options of your choice. If you already have Sorcery Points, gain PB bonus points and one additional Metamagic option.</p>
+        <p><strong>Font of Magic</strong> (limited): you can convert Sorcery Points into spell slots (and vice versa) at the standard rate, but only for slots of 3rd level or lower.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Empowered Wellspring</span></div>
+      <div class="tier-body">
+        <p>Your Sorcery Points increase by your Proficiency Bonus (total: PB × 2). You learn one additional Metamagic option (three total from this feat). Font of Magic now applies to spell slots of 5th level or lower.</p>
+        <p>You gain <strong>Sorcerous Restoration</strong> (limited): once per Long Rest, when you have 0 Sorcery Points, you can use a Bonus Action to regain Sorcery Points equal to half your Proficiency Bonus (rounded down).</p>
+        <p>You learn two additional spells from the Sorcerer spell list (of any level you can cast), which count as always-prepared spells for you.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Overchannel</span></div>
+      <div class="tier-body">
+        <p>Your Sorcery Points increase by your Proficiency Bonus (total: PB × 3). You learn one additional Metamagic option (four total from this feat).</p>
+        <p><strong>Overchannel.</strong> When you cast a damage-dealing spell of 5th level or lower, you can deal maximum damage instead of rolling. The first time you use this after a Long Rest it costs nothing. Each subsequent use before a Long Rest causes you to take 2d12 necrotic damage per spell level (no saves, no resistance).</p>
+        <p>You can now apply two different Metamagic options to the same spell simultaneously.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Sorcerous Origin Ascendance</span></div>
+      <div class="tier-body">
+        <p>Your Sorcery Points increase by your Proficiency Bonus (total: PB × 4). Font of Magic now applies to spell slots of any level.</p>
+        <p><strong>Wild Surge (optional).</strong> Once per Long Rest, you can intentionally trigger a Wild Magic surge on a spell you cast, rolling on the Wild Magic table. If the result benefits you or your allies, you regain 3 Sorcery Points.</p>
+        <p>Choose a <strong>Sorcerous Origin</strong> (Wild Magic, Draconic, Storm, or Divine Soul). You gain that subclass's 6th-level feature and one of its Spells Known (always prepared). The raw magic in your blood has finally found its source.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ WARLOCK -->
+  <div class="feat-panel" id="warlock">
+    <div class="feat-title-row">
+      <span class="feat-icon">👁️</span>
+      <span class="feat-main-name">Eldritch Pact</span>
+      <span class="feat-class-label">Warlock</span>
+    </div>
+    <p class="feat-flavor">Something vast and ancient noticed you. It made you an offer you did not fully understand. You accepted. The terms are becoming clearer every day.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Pact Magic</span></div>
+      <div class="tier-body">
+        <p>You gain two <strong>Pact Magic</strong> spell slots of a level equal to half your Proficiency Bonus (min 1st, max 5th), regained on a Short or Long Rest. You learn two Warlock spells (up to the slot level) and two <strong>Eldritch Invocations</strong>.</p>
+        <p>You know the <em>Eldritch Blast</em> cantrip. You use Charisma as your spellcasting ability for these spells.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Deepened Pact</span></div>
+      <div class="tier-body">
+        <p>You gain a third Pact Magic spell slot. You learn two additional Warlock spells and two additional Eldritch Invocations (four total from this feat).</p>
+        <p>Choose a <strong>Pact Boon</strong>: <em>Pact of the Blade</em> (summon a magical weapon bonded to you), <em>Pact of the Chain</em> (gain a familiar with enhanced statistics), or <em>Pact of the Tome</em> (a Book of Shadows containing three cantrips from any spell list).</p>
+        <p>You can apply two different Invocations to the same <em>Eldritch Blast</em> cast.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Patron's Favor</span></div>
+      <div class="tier-body">
+        <p>You gain a fourth Pact Magic slot. You learn two additional Warlock spells and two additional Eldritch Invocations (six total from this feat).</p>
+        <p>Choose a <strong>Patron</strong> (Archfey, Fiend, Great Old One, or Celestial). You gain that patron's Expanded Spell List (those spells are always prepared for you) and its 6th-level subclass feature.</p>
+        <p><strong>Dark One's Own Luck</strong> (or patron equivalent): once per Short Rest, when you make an ability check or saving throw, you can add 1d10 to the result.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Eldritch Master</span></div>
+      <div class="tier-body">
+        <p>You gain a fifth Pact Magic slot. You learn two additional Warlock spells and two additional Eldritch Invocations (eight total from this feat). Your Pact Magic slot level increases by 1.</p>
+        <p><strong>Eldritch Master.</strong> Once per Long Rest, you can entreat your patron for aid, spending 1 minute in prayer or meditation. You regain all expended Pact Magic slots without requiring a rest.</p>
+        <p>You gain your chosen Patron's <strong>10th-level subclass feature</strong>, representing the culmination of your pact and your patron's investment in you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ WIZARD -->
+  <div class="feat-panel" id="wizard">
+    <div class="feat-title-row">
+      <span class="feat-icon">📖</span>
+      <span class="feat-main-name">Arcane Scholar</span>
+      <span class="feat-class-label">Wizard</span>
+    </div>
+    <p class="feat-flavor">You have begun to understand that magic is not a talent — it is a language. And you intend to become fluent.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Spellbook</span></div>
+      <div class="tier-body">
+        <p>You gain proficiency in Arcana. If you already have proficiency, gain expertise instead.</p>
+        <p><strong>Spellbook.</strong> You acquire a wizard's spellbook containing 6 wizard spells of your choice (1st–3rd level). You can prepare a number equal to your Proficiency Bonus + your Intelligence modifier. You use your primary spellcasting ability (or Intelligence if you have none) to cast these spells. You can copy additional wizard spells into your book using the standard rules.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Arcane Recovery & Savant</span></div>
+      <div class="tier-body">
+        <p>Your spellbook gains 4 additional wizard spells (up to 5th level). You can now prepare spells up to 5th level from your spellbook.</p>
+        <p><strong>Arcane Recovery.</strong> Once per Long Rest, after a Short Rest, you can recover expended spell slots with a combined level equal to or less than half your Proficiency Bonus (rounded up). You cannot recover slots above 5th level this way.</p>
+        <p>Choose an <strong>Arcane Tradition</strong>. You gain that school's Savant feature (halved time and gold to copy that school's spells) and its 2nd-level school feature.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Spell Mastery</span></div>
+      <div class="tier-body">
+        <p>Your spellbook gains 4 additional wizard spells (up to 7th level). Arcane Recovery can now recover slots up to 6th level.</p>
+        <p><strong>Spell Mastery.</strong> Choose one wizard spell of 1st level and one of 2nd level from your spellbook. You can cast each of these spells at their lowest level without expending a spell slot. If you want to cast either at a higher level, you must expend a spell slot normally. You can change your chosen spells during a Long Rest.</p>
+        <p>You gain your Arcane Tradition's 6th-level school feature.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Signature Spells</span></div>
+      <div class="tier-body">
+        <p>Your spellbook gains 4 additional wizard spells (up to 9th level). You can now prepare spells of any level from your spellbook, and Arcane Recovery can recover one slot of any level.</p>
+        <p><strong>Signature Spells.</strong> Choose two wizard spells of 3rd level or lower in your spellbook as your signature spells. You always have these spells prepared, and you can cast each of them once per Short Rest without expending a spell slot. When you cast a signature spell at its normal level, you can cast it as if under the effect of Quickened Spell (no Sorcery Points needed) once per Long Rest.</p>
+        <p>You gain your Arcane Tradition's 10th-level school feature.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ ARTIFICER -->
+  <div class="feat-panel" id="artificer">
+    <div class="feat-title-row">
+      <span class="feat-icon">⚙️</span>
+      <span class="feat-main-name">Arcane Inventor</span>
+      <span class="feat-class-label">Artificer</span>
+    </div>
+    <p class="feat-flavor">You have studied the marriage of magic and craft, learning to bind arcane power into tools, weapons, and devices. Every problem, you have come to believe, is simply an engineering challenge you haven't solved yet.</p>
+    <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+    <div class="tier-block tier-1">
+      <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Magical Tinkering & Prepared Devices</span></div>
+      <div class="tier-body">
+        <p>You gain proficiency with Tinker's Tools and one other type of Artisan's Tools of your choice. You gain proficiency in Arcana. If you already have proficiency, gain expertise instead.</p>
+        <p><strong>Magical Tinkering.</strong> As a Magic action while holding Tinker's Tools, you can conjure one mundane item in an unoccupied space within 5 feet (choose from: Ball Bearings, Rope, Oil, Caltrops, Torch, Tinderbox, Net, or any item worth 1 gp or less). The item is magical, lasts until your next Long Rest, and you can have a number of items active at once equal to your Intelligence modifier (minimum 1). You regain all uses on a Long Rest.</p>
+        <p><strong>Replicate Magic Item (Common).</strong> When you finish a Long Rest, you can create one Common magic item of your choice (non-potion, non-scroll) using your Tinker's Tools. The item lasts until your next Long Rest. You know two Common item plans to start; you learn one additional plan each time you take a new tier of this feat.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-2">
+      <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Flash of Genius & Uncommon Replication</span></div>
+      <div class="tier-body">
+        <p>You can now create two items on a Long Rest using Replicate Magic Item, and you can create <strong>Uncommon weapons, armor, and wands</strong> in addition to Common items. You know four Uncommon weapon/armor/wand plans of your choice; you learn one additional plan per tier.</p>
+        <p><strong>Flash of Genius.</strong> When you or a creature you can see within 30 feet fails an ability check or saving throw, you can use your Reaction to add your Intelligence modifier to the roll, potentially turning the failure into a success. You can use this feature a number of times equal to your Intelligence modifier, regained on a Long Rest.</p>
+        <p>You learn two Artificer spells of your choice (1st or 2nd level). These are always prepared for you and use Intelligence as your spellcasting ability. You can cast them using any Artisan's Tools or Tinker's Tools you are holding as a spellcasting focus.</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-3">
+      <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Spell-Storing Item & Full Uncommon Access</span></div>
+      <div class="tier-body">
+        <p>You can now replicate <strong>any Uncommon magic item</strong> (not just weapons, armor, and wands), and you can attune to one additional magic item beyond your normal limit.</p>
+        <p><strong>Spell-Storing Item.</strong> When you finish a Long Rest, you can imbue one Simple or Martial weapon or an Artisan's Tool you are holding with a spell. Choose one 1st- or 2nd-level Artificer spell that has a casting time of an action. A creature holding the item can use their Action to cast that spell from it, using your Intelligence modifier and spell save DC. The spell can be cast a number of times equal to twice your Intelligence modifier. All charges are lost on your next Long Rest when you can recharge the item.</p>
+        <p>Choose an <strong>Artificer Specialization</strong> (Alchemist, Artillerist, Armorer, or Battle Smith). You gain that subclass's 3rd-level feature and its Specialization Spells (always prepared, using Intelligence).</p>
+      </div>
+    </div>
+
+    <div class="tier-block tier-4">
+      <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Soul of Artifice</span></div>
+      <div class="tier-body">
+        <p>You can now replicate <strong>Rare magic items</strong>. You can create up to three items on a Long Rest using Replicate Magic Item, and you can attune to two additional magic items beyond your normal limit (three total bonus attunements from this feat).</p>
+        <p><strong>Magical Guidance.</strong> Once per turn when you make an ability check, you can roll 1d6 and add it to the result. You can do this after seeing the roll but before any effects apply.</p>
+        <p><strong>Soul of Artifice.</strong> When you are reduced to 0 hit points and are not killed outright, you can use your Reaction to consume one Uncommon or Rare magic item you created with Replicate Magic Item — the item is destroyed and you are restored to 20 hit points instead. Once you use this feature, you can't do so again until you finish a Long Rest.</p>
+        <p>You gain your chosen Specialization's <strong>5th-level subclass feature</strong>, representing the full realization of your chosen discipline.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; line-height:1.8; color:var(--ink-soft); font-style:italic; border: 1px solid var(--parchment-dark); padding: 1rem 1.2rem; background: rgba(255,255,255,0.3); margin-top:1.5rem;">
+    <strong style="font-family:'Cinzel',serif; font-size:0.78rem; color:var(--red); font-style:normal;">Designer's Notes.</strong>
+    Each feat is taken at level 5 (Tier I), 10 (Tier II), 15 (Tier III), and 20 (Tier IV), and requires the previous tier. All lower-tier benefits are cumulative. Subclass features gained at Tier III–IV are intended as a capstone reward for full investment, and DM approval is recommended for those features. Tier IV features are intentionally near the power level of a 4–5 level multiclass dip, balanced by the opportunity cost of the class feat slots.
+  </div>
+
+  <footer>Homebrew Tiered Class Feats · D&D 5e (2024) · Not official Wizards of the Coast content</footer>
+</div>
+
+<script>
+function show(cls) {
+  document.querySelectorAll('.feat-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.class-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(cls).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>
