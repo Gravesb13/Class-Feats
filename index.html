@@ -210,6 +210,49 @@
     text-align: center;
   }
 
+  .spellcaster-block {
+    margin-bottom: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(180,134,11,0.07);
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+  }
+  .spellcaster-block-header {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .spellcaster-block .tier-body { font-size: 0.85rem; }
+  .slot-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    margin-top: 0.5rem;
+    font-family: 'Cinzel', serif;
+  }
+  .slot-table th {
+    background: rgba(180,134,11,0.15);
+    color: var(--ink-soft);
+    font-weight: 600;
+    padding: 0.2em 0.5em;
+    text-align: center;
+    border: 1px solid var(--parchment-dark);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+  }
+  .slot-table td {
+    padding: 0.2em 0.5em;
+    text-align: center;
+    border: 1px solid var(--parchment-dark);
+    color: var(--ink);
+    font-size: 0.75rem;
+  }
+  .slot-table tr:first-child td { font-weight: 600; color: var(--red); }
+
   footer {
     text-align: center;
     margin-top: 2rem;
@@ -273,6 +316,8 @@
         <p>You can <strong>Rage</strong> as a Barbarian. You have Rage uses equal to your Proficiency Bonus, regained on a Long Rest (you also regain one use on a Short Rest). Your Rage Damage bonus is +2. While raging, you have resistance to Bludgeoning, Piercing, and Slashing damage.</p>
         <p>Rage lasts until the end of your next turn. You can extend it each round by making an attack roll against an enemy, forcing an enemy to make a saving throw, or taking a Bonus Action to extend it. Rage ends early only if you don Heavy Armor or have the <em>Unconscious</em> condition (not merely Incapacitated). As part of the Bonus Action to enter Rage, you can move up to half your Speed.</p>
         <p>You gain proficiency in Athletics. If you already have proficiency, you gain expertise instead.</p>
+        <p><strong>Unarmored Defense.</strong> While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.</p>
+      <p><strong>Weapon Mastery.</strong> Choose one weapon you are proficient with. You gain the Mastery property of that weapon. You can change your Weapon Mastery choice whenever you finish a Long Rest.</p>
       </div>
     </div>
 
@@ -315,6 +360,25 @@
     <p class="feat-flavor">You have learned to weave magic into your words and performances. A true legend is not born — they are composed, one verse at a time.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Full Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 5th level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd, 3rd</td><td>1×1st, 1×2nd, 1×3rd</td></tr>
+          <tr><td>II (Lv 10)</td><td>4th, 5th</td><td>1×1st–5th</td></tr>
+          <tr><td>III (Lv 15)</td><td>6th, 7th, 8th</td><td>1×1st–8th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>9th</td><td>1×1st–9th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Bardic Spark</span></div>
       <div class="tier-body">
@@ -328,7 +392,7 @@
       <div class="tier-body">
         <p>Your Bardic Inspiration die increases to a d8, and uses are now regained on a Short or Long Rest.</p>
         <p>You gain <strong>Jack of All Trades</strong>: add half your Proficiency Bonus to any ability check that doesn't already include your full Proficiency Bonus. If you already have this feature, choose two skills you are proficient in and gain expertise in them instead.</p>
-        <p>You learn two additional cantrips from any class spell list.</p>
+        <p>Choose two skills you are proficient in and gain <strong>Expertise</strong> in them (double Proficiency Bonus). If you already have Expertise in both chosen skills, choose two additional skills to gain proficiency in instead.</p>
       </div>
     </div>
 
@@ -360,6 +424,25 @@
     </div>
     <p class="feat-flavor">A divine power has chosen you as its vessel. You did not seek this — but the god found you worthy regardless.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Full Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 5th level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd, 3rd</td><td>1×1st, 1×2nd, 1×3rd</td></tr>
+          <tr><td>II (Lv 10)</td><td>4th, 5th</td><td>1×1st–5th</td></tr>
+          <tr><td>III (Lv 15)</td><td>6th, 7th, 8th</td><td>1×1st–8th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>9th</td><td>1×1st–9th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Chosen Vessel</span></div>
@@ -406,6 +489,25 @@
     </div>
     <p class="feat-flavor">The boundary between yourself and nature grows thinner with each passing season. You walk the path of the Circle of the Moon — those who shed their flesh not as escape, but as transformation. Eventually, you will wonder where the wild ends and you begin.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
+
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Full Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 5th level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd, 3rd</td><td>1×1st, 1×2nd, 1×3rd</td></tr>
+          <tr><td>II (Lv 10)</td><td>4th, 5th</td><td>1×1st–5th</td></tr>
+          <tr><td>III (Lv 15)</td><td>6th, 7th, 8th</td><td>1×1st–8th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>9th</td><td>1×1st–9th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Wild Shape</span></div>
@@ -462,6 +564,7 @@
       <div class="tier-body">
         <p>You gain a pool of <strong>Superiority Dice</strong> (d8s) equal to your Proficiency Bonus, regained on a Short or Long Rest. You learn three Maneuvers from the Battle Master list. Save DC = 8 + Proficiency Bonus + Strength or Dexterity modifier.</p>
         <p>You gain <strong>Second Wind</strong>: as a Bonus Action, regain 1d10 + your fighter level (or Proficiency Bonus × 2 if you have no fighter levels) hit points. Usable once per Short Rest.</p>
+        <p><strong>Weapon Mastery.</strong> Choose three weapons you are proficient with. You gain the Mastery property of each chosen weapon. You can change your Weapon Mastery choices whenever you finish a Long Rest.</p>
       </div>
     </div>
 
@@ -508,6 +611,8 @@
       <div class="tier-body">
         <p>You gain <strong>Focus Points</strong> equal to your Proficiency Bonus, regained on a Short or Long Rest. You can spend them on: <em>Flurry of Blows</em> (1 Focus — make two Unarmed Strikes as a Bonus Action at any time, no Attack action required first), <em>Patient Defense</em> (free: Disengage as a Bonus Action; or 1 Focus: Disengage and Dodge as a single Bonus Action), and <em>Step of the Wind</em> (free: Dash as a Bonus Action; or 1 Focus: Dash and Disengage as a single Bonus Action with doubled jump distance).</p>
         <p><strong>Martial Arts.</strong> Your unarmed strikes deal 1d6 damage. You can use Dexterity for unarmed attack rolls, and for setting the DC of grapples and shoves. You can make one Unarmed Strike as a Bonus Action whenever you take the Attack action.</p>
+        <p><strong>Unarmored Defense.</strong> While you are not wearing any armor or wielding a shield, your Armor Class equals 10 + your Dexterity modifier + your Wisdom modifier.</p>
+      <p><strong>Weapon Mastery.</strong> Choose one weapon you are proficient with. You gain the Mastery property of that weapon. You can change your Weapon Mastery choice whenever you finish a Long Rest.</p>
       </div>
     </div>
 
@@ -551,18 +656,37 @@
     <p class="feat-flavor">You have sworn a sacred oath, and the oath has claimed you in return. Its power grows with every promise kept — and exacts its toll on every promise broken.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Half Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 3rd level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd</td><td>1×1st, 1×2nd</td></tr>
+          <tr><td>II (Lv 10)</td><td>3rd</td><td>1×1st–3rd</td></tr>
+          <tr><td>III (Lv 15)</td><td>4th</td><td>1×1st–4th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>5th</td><td>1×1st–5th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Lay on Hands & Smite</span></div>
       <div class="tier-body">
-        <p><strong>Lay on Hands.</strong> You gain a healing pool equal to 5 × your Proficiency Bonus, regained on a Long Rest. As a <em>Bonus Action</em>, restore any amount from the pool to a creature you touch, or spend 5 points to cure one disease or remove one poison affecting them.</p>
-        <p><strong>Divine Smite.</strong> Divine Smite is now a spell. When you hit a creature with a melee weapon or Unarmed Strike, you can expend a spell slot as a <em>Bonus Action</em> on that same turn to deal extra Radiant damage: 2d8 per slot level (3d8 against Undead and Fiends). Once per turn.</p>
+        <p><strong>Lay on Hands.</strong> You gain a healing pool equal to 5 × your character level, regained on a Long Rest. As a <em>Bonus Action</em>, restore any amount from the pool to a creature you touch, or spend 5 points to cure one disease or remove one poison affecting them.</p>
+        <p><strong>Divine Smite.</strong> Divine Smite is a spell. When you hit a creature with a melee weapon or Unarmed Strike, you can expend a spell slot as a <em>Bonus Action</em> on that same turn to deal extra Radiant damage: 2d8 per slot level (3d8 against Undead and Fiends). Once per turn. Additionally, once per Long Rest you can cast Divine Smite at 1st level without expending a spell slot.</p>
+      <p><strong>Weapon Mastery.</strong> Choose one weapon you are proficient with. You gain the Mastery property of that weapon. You can change your Weapon Mastery choice whenever you finish a Long Rest.</p>
       </div>
     </div>
 
     <div class="tier-block tier-2">
       <div class="tier-block-header"><span class="tier-pip">TIER II · LV 10</span><span class="tier-feature-name">Divine Health & Aura of Protection</span></div>
       <div class="tier-body">
-        <p>Your Lay on Hands pool increases to 10 × your Proficiency Bonus.</p>
         <p><strong>Divine Health.</strong> You are immune to disease.</p>
         <p><strong>Aura of Protection.</strong> Whenever you or a friendly creature within 10 feet makes a saving throw, you may add your Charisma modifier (minimum +1) to the roll. You must be conscious to grant this benefit.</p>
         <p>You gain proficiency in Religion. If you already have it, gain expertise instead.</p>
@@ -572,7 +696,7 @@
     <div class="tier-block tier-3">
       <div class="tier-block-header"><span class="tier-pip">TIER III · LV 15</span><span class="tier-feature-name">Sacred Oath Features</span></div>
       <div class="tier-body">
-        <p>Your Lay on Hands pool increases to 15 × your Proficiency Bonus. Your Aura of Protection extends to 30 feet.</p>
+        <p>Your Aura of Protection extends to 30 feet.</p>
         <p>Choose a <strong>Sacred Oath</strong> (Devotion, Ancients, Vengeance, or Glory). You gain that oath's Channel Divinity options (2 uses, regained on Short or Long Rest) and its two 3rd-level Oath Spells (always prepared, using your primary casting ability or Charisma).</p>
         <p>You gain <strong>Aura of Courage</strong>: friendly creatures within 30 feet cannot be Frightened while you are conscious.</p>
       </div>
@@ -581,7 +705,6 @@
     <div class="tier-block tier-4">
       <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Sacred Champion</span></div>
       <div class="tier-body">
-        <p>Your Lay on Hands pool increases to 20 × your Proficiency Bonus.</p>
         <p>You gain your chosen Sacred Oath's <strong>Oath 5th-level spells</strong> (always prepared) and its <strong>7th-level subclass feature</strong>.</p>
         <p><strong>Sacred Champion.</strong> Once per Long Rest, as a Bonus Action, you radiate an aura of divine power for 1 minute. During this time: your weapon attacks deal an extra 1d8 radiant damage; you and allies within 30 feet have advantage on death saving throws; and your Lay on Hands pool restores an additional 5 hit points per use.</p>
       </div>
@@ -598,12 +721,32 @@
     <p class="feat-flavor">You do not choose a favored enemy by species or terrain. Your favored enemy is whoever you are hunting right now. The mark follows your gaze — and what you mark, you kill.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Half Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 3rd level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd</td><td>1×1st, 1×2nd</td></tr>
+          <tr><td>II (Lv 10)</td><td>3rd</td><td>1×1st–3rd</td></tr>
+          <tr><td>III (Lv 15)</td><td>4th</td><td>1×1st–4th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>5th</td><td>1×1st–5th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Favored Enemy & Deft Explorer</span></div>
       <div class="tier-body">
         <p><strong>Favored Enemy.</strong> You always have <em>Hunter's Mark</em> prepared. You can cast it without expending a spell slot a number of times equal to your Proficiency Bonus, regained on a Long Rest. You use Wisdom as your spellcasting ability for it. When you hit your marked target, it takes an extra 1d6 Force damage.</p>
         <p><strong>Deft Explorer.</strong> Choose one skill you are proficient in — you gain Expertise in it (double Proficiency Bonus). You also learn two additional languages of your choice, reflecting your wide-ranging travels.</p>
         <p><strong>Roving.</strong> Your Speed increases by 10 feet while you are not wearing Heavy Armor. You also gain a Climb Speed and a Swim Speed equal to your Speed.</p>
+      <p><strong>Weapon Mastery.</strong> Choose one weapon you are proficient with. You gain the Mastery property of that weapon. You can change your Weapon Mastery choice whenever you finish a Long Rest.</p>
       </div>
     </div>
 
@@ -652,6 +795,7 @@
       <div class="tier-body">
         <p><strong>Sneak Attack.</strong> Once per turn when you hit with a weapon or unarmed attack and have advantage on the roll (or an ally is adjacent to the target and you don't have disadvantage), deal an extra 2d6 damage. If you already have Sneak Attack, increase it by 2d6 instead.</p>
         <p>Choose two skills you are proficient in and gain <strong>Expertise</strong> in them (double Proficiency Bonus). If you already have Expertise in both chosen skills, choose two more skills to gain proficiency in instead.</p>
+      <p><strong>Weapon Mastery.</strong> Choose one weapon you are proficient with. You gain the Mastery property of that weapon. You can change your Weapon Mastery choice whenever you finish a Long Rest.</p>
       </div>
     </div>
 
@@ -694,6 +838,25 @@
     <p class="feat-flavor">Magic does not flow through you. It erupts. The question has never been whether you have the power — only whether you can keep it from consuming you.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Full Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 5th level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd, 3rd</td><td>1×1st, 1×2nd, 1×3rd</td></tr>
+          <tr><td>II (Lv 10)</td><td>4th, 5th</td><td>1×1st–5th</td></tr>
+          <tr><td>III (Lv 15)</td><td>6th, 7th, 8th</td><td>1×1st–8th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>9th</td><td>1×1st–9th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Sorcery Points & Metamagic</span></div>
       <div class="tier-body">
@@ -723,7 +886,7 @@
     <div class="tier-block tier-4">
       <div class="tier-block-header"><span class="tier-pip">TIER IV · LV 20</span><span class="tier-feature-name">Sorcerous Origin Ascendance</span></div>
       <div class="tier-body">
-        <p>Your Sorcery Points increase by your Proficiency Bonus (total: PB × 4). Font of Magic now applies to spell slots of any level.</p>
+        <p><strong>Font of Magic</strong> now applies to spell slots of any level.</p>
         <p><strong>Wild Surge (optional).</strong> Once per Long Rest, you can intentionally trigger a Wild Magic surge on a spell you cast, rolling on the Wild Magic table. If the result benefits you or your allies, you regain 3 Sorcery Points.</p>
         <p>Choose a <strong>Sorcerous Origin</strong> (Wild Magic, Draconic, Storm, or Divine Soul). You gain that subclass's 6th-level feature and one of its Spells Known (always prepared). The raw magic in your blood has finally found its source.</p>
       </div>
@@ -786,6 +949,25 @@
     <p class="feat-flavor">You have begun to understand that magic is not a talent — it is a language. And you intend to become fluent.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Full Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 5th level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd, 3rd</td><td>1×1st, 1×2nd, 1×3rd</td></tr>
+          <tr><td>II (Lv 10)</td><td>4th, 5th</td><td>1×1st–5th</td></tr>
+          <tr><td>III (Lv 15)</td><td>6th, 7th, 8th</td><td>1×1st–8th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>9th</td><td>1×1st–9th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Spellbook</span></div>
       <div class="tier-body">
@@ -832,12 +1014,31 @@
     <p class="feat-flavor">You have studied the marriage of magic and craft, learning to bind arcane power into tools, weapons, and devices. Every problem, you have come to believe, is simply an engineering challenge you haven't solved yet.</p>
     <p class="cumulative-note">✦ All lower tiers are retained when you advance ✦</p>
 
+  <div class="spellcaster-block">
+    <div class="spellcaster-block-header">✦ Spellcasting — Half Caster</div>
+    <div class="tier-body">
+      <p>Each time you take a tier of this feat, you can prepare <strong>2 additional spells</strong> from this class's spell list. Spells must be of a level for which you have spell slots from this feat. You may replace any of these prepared spells when you gain a level.</p>
+      <p>If you do not already have the <strong>Spellcasting</strong> feature, you gain it now, using the ability score associated with this class. These spell slots form a <strong>separate pool</strong> from any class spell slots you already have — they cannot be combined and are regained on a Long Rest. If you <em>already</em> have the Spellcasting feature, these slots are added to your existing pool instead.</p>
+      <p>You gain <strong>one spell slot at each spell level</strong> the base class has unlocked at that tier, as shown below. Each tier's slots are cumulative — taking Tier II means you have one slot at each of 1st through 3rd level.</p>
+      <table class="slot-table">
+        <thead><tr><th>Tier</th><th>New Levels Unlocked</th><th>Total Slots (one per level)</th></tr></thead>
+        <tbody>
+          <tr><td>I (Lv 5)</td><td>1st, 2nd</td><td>1×1st, 1×2nd</td></tr>
+          <tr><td>II (Lv 10)</td><td>3rd</td><td>1×1st–3rd</td></tr>
+          <tr><td>III (Lv 15)</td><td>4th</td><td>1×1st–4th</td></tr>
+          <tr><td>IV (Lv 20)</td><td>5th</td><td>1×1st–5th</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
     <div class="tier-block tier-1">
       <div class="tier-block-header"><span class="tier-pip">TIER I · LV 5</span><span class="tier-feature-name">Magical Tinkering & Prepared Devices</span></div>
       <div class="tier-body">
         <p>You gain proficiency with Tinker's Tools and one other type of Artisan's Tools of your choice. You gain proficiency in Arcana. If you already have proficiency, gain expertise instead.</p>
         <p><strong>Magical Tinkering.</strong> As a Magic action while holding Tinker's Tools, you can conjure one mundane item in an unoccupied space within 5 feet (choose from: Ball Bearings, Rope, Oil, Caltrops, Torch, Tinderbox, Net, or any item worth 1 gp or less). The item is magical, lasts until your next Long Rest, and you can have a number of items active at once equal to your Intelligence modifier (minimum 1). You regain all uses on a Long Rest.</p>
         <p><strong>Replicate Magic Item (Common).</strong> When you finish a Long Rest, you can create one Common magic item of your choice (non-potion, non-scroll) using your Tinker's Tools. The item lasts until your next Long Rest. You know two Common item plans to start; you learn one additional plan each time you take a new tier of this feat.</p>
+        <p><strong>Weapon Mastery.</strong> Choose one weapon you are proficient with. You gain the Mastery property of that weapon. You can change your Weapon Mastery choice whenever you finish a Long Rest.</p>
       </div>
     </div>
 
